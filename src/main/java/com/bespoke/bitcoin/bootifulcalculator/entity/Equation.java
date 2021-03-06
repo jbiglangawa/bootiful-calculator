@@ -4,24 +4,24 @@ import java.util.List;
 import java.util.Objects;
 
 public class Equation {
-    private List<Integer> values;
+    private List<String> values;
     private String operation;
     private String type;
 
     public Equation() {
     }
 
-    public Equation(List<Integer> values, String operation, String type) {
+    public Equation(List<String> values, String operation, String type) {
         this.values = values;
         this.operation = operation;
         this.type = type;
     }
 
-    public List<Integer> getValues() {
+    public List<String> getValues() {
         return this.values;
     }
 
-    public void setValues(List<Integer> values) {
+    public void setValues(List<String> values) {
         this.values = values;
     }
 
@@ -41,7 +41,7 @@ public class Equation {
         this.type = type;
     }
 
-    public Equation values(List<Integer> values) {
+    public Equation values(List<String> values) {
         setValues(values);
         return this;
     }

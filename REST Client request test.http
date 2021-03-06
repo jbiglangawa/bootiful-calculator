@@ -1,0 +1,42 @@
+POST http://localhost:8080/calculate
+content-type: application/json
+
+{
+    "values": [5, 1, 20],
+    "operation": "add",
+    "type": "integer"
+}
+
+###
+
+POST http://localhost:8080/calculate
+content-type: application/json
+
+{
+    "values": [5.0321321312, 1.4440, 20.132489754100000000000000000052],
+    "operation": "sub",
+    "type": "decimal"
+}
+
+###
+
+POST http://localhost:8080/calculate
+content-type: application/json
+
+{
+    "values": [5.02, 1.44000000064565465465465465400000000040, 20.1324],
+    "operation": "mul",
+    "type": "safe"
+}
+
+###
+
+
+POST http://localhost:8080/calculate
+content-type: application/json
+
+{
+    "values": [5.02, 1.4440, 20.1324],
+    "operation": "div",
+    "type": "decimal"
+}
