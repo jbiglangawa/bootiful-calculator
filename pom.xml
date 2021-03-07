@@ -10,10 +10,10 @@
 	</parent>
 	<groupId>com.bespoke.bitcoin</groupId>
 	<artifactId>bootiful-calculator</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<version>1.0</version>
+	<packaging>jar</packaging>
 	<name>bootiful-calculator</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Simple Spring Boot Rest Controller for the coding challenge for Java Discord Server</description>
 	<properties>
 		<java.version>8</java.version>
 	</properties>
