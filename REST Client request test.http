@@ -71,3 +71,16 @@ content-type: application/json
     "operation": "div",
     "type": "integer"
 }
+
+
+###
+
+
+POST https://bootiful-calculator.herokuapp.com/calculate
+content-type: application/json
+
+{
+    "values": [5, 1, 20],
+    "operation": "add",
+    "type": "integer"
+}

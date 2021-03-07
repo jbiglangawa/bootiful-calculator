@@ -1,1 +1,1 @@
-web: java -jar target/bootiful-calculator-1.0.jar
+web: java -jar target/bootiful-calculator-1.0.jar -Dserver.port=$PORT
