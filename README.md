@@ -1,6 +1,5 @@
 # Challenge #2: Bootiful Calculator | SwingSpringer entry
-Entry for the [Shaunwild97's](https://github.com/Shaunwild97/CodingChallenges/tree/master/bootiful-calculator) Coding challenge from the Java Discord server. I recommend to use [VS Code](https://code.visualstudio.com/) for the workspace. The project is built using Spring Boot version 2.4.3 and [AdoptOpenJDK version 11.0.10](https://adoptopenjdk.net/), but any version of Java 8 and above will work.
-
+Entry for the [Shaunwild97's](https://github.com/Shaunwild97/CodingChallenges/tree/master/bootiful-calculator) Coding challenge from the Java Discord server. I recommend to use [VS Code](https://code.visualstudio.com/) for the workspace. The project is built using Spring Boot version 2.4.3 and Java version 1.8.0_261, but any version of Java 8 and above will work.
 
 ## Concept
 
