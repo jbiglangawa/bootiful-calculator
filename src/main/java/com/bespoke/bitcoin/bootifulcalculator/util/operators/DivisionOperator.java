@@ -10,7 +10,7 @@ public class DivisionOperator implements Operator {
     public Type evaluate(List<Type> values) {
         Type quotient = values.get(0);
         for(int i = 1; i < values.size(); i++) {
-            quotient.add(values.get(i));
+            quotient.divide(values.get(i));
         }
         return quotient;
     }

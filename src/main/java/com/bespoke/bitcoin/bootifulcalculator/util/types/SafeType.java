@@ -1,9 +1,12 @@
 package com.bespoke.bitcoin.bootifulcalculator.util.types;
 
+import java.math.BigDecimal;
+import java.math.MathContext;
+
 import com.bespoke.bitcoin.bootifulcalculator.exceptions.IncompatibleTypeException;
 
 public class SafeType extends Type {
-    private Double value;
+    private BigDecimal value;
 
     /**
      * Empty Constructor
@@ -12,7 +15,7 @@ public class SafeType extends Type {
     }
 
     public SafeType(String value) {
-        this.value = Double.parseDouble(value);
+        this.value = new BigDecimal(value);
     }
 
     
@@ -23,18 +26,16 @@ public class SafeType extends Type {
     @Override
     public void add(Type augend) {
         if(augend instanceof SafeType) {
-            this.value = Double.sum(this.value, (Double) augend.getValue());
+            value = value.add((BigDecimal) augend.getValue());
         }else {
             throw new IncompatibleTypeException(this, augend); 
         }
     }
 
-    
-
     @Override
     public void subtract(Type subtrahend) {
         if(subtrahend instanceof SafeType) {
-            this.value = this.value - (Double) subtrahend.getValue();
+            value = value.subtract((BigDecimal) subtrahend.getValue());
         }else {
             throw new IncompatibleTypeException(this, subtrahend); 
         }
@@ -43,7 +44,7 @@ public class SafeType extends Type {
     @Override
     public void multiply(Type multiplier) {
         if(multiplier instanceof SafeType) {
-            this.value = this.value * (Double) multiplier.getValue();
+            value = value.multiply((BigDecimal) multiplier.getValue());
         }else {
             throw new IncompatibleTypeException(this, multiplier); 
         }
@@ -52,18 +53,18 @@ public class SafeType extends Type {
     @Override
     public void divide(Type dividend) {
         if(dividend instanceof SafeType) {
-            this.value = this.value / (Double) dividend.getValue();
+            value = value.divide((BigDecimal) dividend.getValue(), MathContext.DECIMAL128);
         }else {
             throw new IncompatibleTypeException(this, dividend); 
         }
     }
 
     
-    public Double getValue() {
-        return this.value;
+    public BigDecimal getValue() {
+        return this.value.stripTrailingZeros();
     }
 
-    public void setValue(Double value) {
+    public void setValue(BigDecimal value) {
         this.value = value;
     }
 

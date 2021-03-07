@@ -1,6 +1,6 @@
 package com.bespoke.bitcoin.bootifulcalculator.exceptions;
 
-public class OperatorNotFoundException extends RuntimeException {
+public class OperatorNotFoundException extends CalculatorException {
     private static final long serialVersionUID = 2648454774540904330L;
     private static String message = "Operator cannot be found. Type should be one of the following: add, sub, mul, div";
 
@@ -12,8 +12,8 @@ public class OperatorNotFoundException extends RuntimeException {
 		super(message + ". Operator value: " + operator);
 	}
 	
-	public OperatorNotFoundException(String msg, Throwable cause) {
-		super(msg, cause);
+	public OperatorNotFoundException(String message, Throwable cause) {
+		super(message, cause);
 	}
 	
 	public OperatorNotFoundException(Throwable cause) {

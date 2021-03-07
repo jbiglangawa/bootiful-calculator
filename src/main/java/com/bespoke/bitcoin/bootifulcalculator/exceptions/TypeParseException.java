@@ -1,6 +1,6 @@
 package com.bespoke.bitcoin.bootifulcalculator.exceptions;
 
-public class TypeParseException extends RuntimeException {
+public class TypeParseException extends CalculatorException {
     private static final long serialVersionUID = 6237758059472956851L;
     private static String message = "System could not parse the value";
 

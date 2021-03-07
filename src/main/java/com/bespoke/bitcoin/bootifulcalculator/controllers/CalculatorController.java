@@ -1,16 +1,17 @@
 package com.bespoke.bitcoin.bootifulcalculator.controllers;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletResponse;
+
 import com.bespoke.bitcoin.bootifulcalculator.entity.Equation;
+import com.bespoke.bitcoin.bootifulcalculator.exceptions.CalculatorException;
+import com.bespoke.bitcoin.bootifulcalculator.services.CalculatorService;
 import com.bespoke.bitcoin.bootifulcalculator.util.CalculatorConstants;
-import com.bespoke.bitcoin.bootifulcalculator.util.CommonUtil;
-import com.bespoke.bitcoin.bootifulcalculator.util.operators.Operator;
 import com.bespoke.bitcoin.bootifulcalculator.util.types.Type;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,33 +19,27 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class CalculatorController {
     
+    @Autowired
+    CalculatorService calculatorService;
+
     @PostMapping("/calculate")
-    Map<String, Object> calculate(@RequestBody Equation equation) {
+    Map<String, Object> calculate(@RequestBody Equation equation, HttpServletResponse httpResponse) {
         Map<String, Object> response = new HashMap<String, Object>();
         
         try {
-            // Get the equation type and operation
-            Type equationType = Type.getType(equation.getType());
-            Operator operator = Operator.getOperator(equation.getOperation());
-
-            List<String> requestedValues = equation.getValues();
-            List<Type> parsedValues = new ArrayList<Type>();
-            for(String value : requestedValues) {
-                parsedValues.add(equationType.parse(value));
-            }
-            
-            Type result = operator.evaluate(parsedValues);
+            Type result = calculatorService.calculateEquation(equation);
             response.put("result", result.getValue());
-        } catch(Exception e) {
-            String errorMessage = e.getMessage();
-            if(CommonUtil.isEmpty(errorMessage)) {
-                errorMessage = "An unknown error occurred. Please contact the system administrator";
-            }
-            response.put(CalculatorConstants.ERROR, errorMessage);
+
+        }catch(CalculatorException e) {
+            response.put(CalculatorConstants.ERROR, e.getMessage());
+            httpResponse.setStatus(400);
+
+        }catch(Exception e) {
+            response.put(CalculatorConstants.ERROR, "An unknown error occurred. Please contact the system administrator");
+            httpResponse.setStatus(400);
         }
 
         return response;
     }
-
 
 }

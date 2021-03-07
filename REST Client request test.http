@@ -36,7 +36,38 @@ POST http://localhost:8080/calculate
 content-type: application/json
 
 {
-    "values": [5.02, 1.4440, 20.1324],
+    "values": [5, 1, 20.1324],
     "operation": "div",
     "type": "decimal"
+}
+
+
+###
+
+POST http://localhost:8080/calculate
+content-type: application/json
+
+{
+    "values": [5, 2],
+    "operation": "div",
+    "type": "integer"
+}
+
+
+
+###
+
+POST http://localhost:8080/calculate
+content-type: application/json
+
+
+###
+
+POST http://localhost:8080/calculate
+content-type: application/json
+
+{
+    "values": [],
+    "operation": "div",
+    "type": "integer"
 }

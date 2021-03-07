@@ -1,11 +1,9 @@
 package com.bespoke.bitcoin.bootifulcalculator.util.types;
 
-import java.math.BigDecimal;
-
 import com.bespoke.bitcoin.bootifulcalculator.exceptions.IncompatibleTypeException;
 
 public class DecimalType extends Type {
-    private BigDecimal value;
+    private Double value;
 
     /**
      * Empty Constructor
@@ -15,7 +13,7 @@ public class DecimalType extends Type {
     }
 
     public DecimalType(String value) {
-        this.value = new BigDecimal(value);
+        this.value = Double.parseDouble(value);
     }
 
     
@@ -23,10 +21,11 @@ public class DecimalType extends Type {
         return new DecimalType(value);
     }
 
+    
     @Override
     public void add(Type augend) {
         if(augend instanceof DecimalType) {
-            this.value = this.value.add((BigDecimal) augend.getValue());
+            this.value = this.value + (Double) augend.getValue();
         }else {
             throw new IncompatibleTypeException(this, augend); 
         }
@@ -35,7 +34,7 @@ public class DecimalType extends Type {
     @Override
     public void subtract(Type subtrahend) {
         if(subtrahend instanceof DecimalType) {
-            this.value = this.value.subtract((BigDecimal) subtrahend.getValue());
+            this.value = this.value - (Double) subtrahend.getValue();
         }else {
             throw new IncompatibleTypeException(this, subtrahend); 
         }
@@ -44,7 +43,7 @@ public class DecimalType extends Type {
     @Override
     public void multiply(Type multiplier) {
         if(multiplier instanceof DecimalType) {
-            this.value = this.value.multiply((BigDecimal) multiplier.getValue());
+            this.value = this.value * (Double) multiplier.getValue();
         }else {
             throw new IncompatibleTypeException(this, multiplier); 
         }
@@ -53,18 +52,18 @@ public class DecimalType extends Type {
     @Override
     public void divide(Type dividend) {
         if(dividend instanceof DecimalType) {
-            this.value = this.value.divide((BigDecimal) dividend.getValue());
+            this.value = this.value / (Double) dividend.getValue();
         }else {
             throw new IncompatibleTypeException(this, dividend); 
         }
     }
 
 
-    public BigDecimal getValue() {
+    public Double getValue() {
         return this.value;
     }
 
-    public void setValue(BigDecimal value) {
+    public void setValue(Double value) {
         this.value = value;
     }
 

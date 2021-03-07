@@ -1,6 +1,6 @@
 package com.bespoke.bitcoin.bootifulcalculator.exceptions;
 
-public class EmptyFieldException extends RuntimeException {
+public class EmptyFieldException extends CalculatorException {
     private static final long serialVersionUID = 2396673561223116550L;
     private static String message = "One of the fields returned is empty";
 
@@ -12,8 +12,8 @@ public class EmptyFieldException extends RuntimeException {
 		super(message + ": " + emptyField);
 	}
 	
-	public EmptyFieldException(String msg, Throwable cause) {
-		super(msg, cause);
+	public EmptyFieldException(String message, Throwable cause) {
+		super(message, cause);
 	}
 	
 	public EmptyFieldException(Throwable cause) {
