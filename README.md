@@ -4,7 +4,6 @@
     <a href="https://jmbiglangawa.github.io/bootiful-calculator/">View Documentation</a>
 </p>
 
-<br />
 <h3 align="center">
   🥈 🎊 2nd place 🎊 🥈
 </h3>
