@@ -5,9 +5,10 @@
 </p>
 
 <br />
-<p align="center">
+<h3 align="center">
   🥈 🎊 2nd place 🎊 🥈
-</p>
+</h3>
+
 This is my first attempt at Spring Boot and Integration testing. Fortunately I won 2nd place! Very happy with the results since I'm against many people knowledgeable in Java
 ![Coding Challenge announcement](https://imgur.com/RHDavRB.png)
 
